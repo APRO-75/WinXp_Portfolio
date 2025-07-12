@@ -1,0 +1,134 @@
+/* General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Tahoma', 'MS Sans Serif', sans-serif;
+    background-color: #00529B; /* Sky Blue Background */
+    color: white;
+    height: 100%;
+    overflow: hidden;
+}
+
+#desktop {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image: url('../assets/bliss-wallpaper.jpg'); /* Bliss Wallpaper */
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+}
+
+#icons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+#taskbar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background-color: #245EDC; /* Windows XP Blue */
+    border-top: 1px solid #000;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+#start-button {
+    background-color: #81C046; /* Windows XP Green */
+    color: white;
+    padding: 5px 15px;
+    border: 1px solid #3B7700;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+#taskbar-icons {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Additional Styles for Windows XP Style Portfolio */
+
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .window {
+        width: 90%;
+        height: 80%;
+    }
+}
+
+.icon {
+    margin: 20px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.icon img {
+    width: 64px;
+    height: 64px;
+}
+
+.icon p {
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+/* Window Styles */
+.window {
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    background-color: #C0C0C0; /* Light Gray Background */
+    border: 2px solid #000;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    display: none;
+}
+
+.window-header {
+    background-color: #00529B; /* Sky Blue Title Bar */
+    color: white;
+    padding: 5px 10px;
+    cursor: move;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.window-header h3 {
+    margin: 0;
+    font-size: 14px;
+}
+
+.window-header .close-button {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.window-content {
+    padding: 10px;
+    height: calc(100% - 30px);
+    overflow-y: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .window {
+        width: 90%;
+        height: 80%;
+    }
+}

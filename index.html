@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows XP Style Portfolio</title>
+    <link rel="stylesheet" href="src/css/styles.css">
+</head>
+<body>
+<div id="desktop">
+    <div id="icons-container">
+        <div class="icon" onclick="openWindow('about-me')">
+            <img src="src/assets/about-me.jpg" alt="About Me">
+            <p>About Me</p>
+        </div>
+        <div class="icon" onclick="openWindow('projects')">
+            <img src="src/assets/projects.jpg" alt="Projects">
+            <p>Projects</p>
+        </div>
+        <div class="icon" onclick="openWindow('resume')">
+            <img src="src/assets/resume.jpg" alt="Resume">
+            <p>Resume</p>
+        </div>
+        <div class="icon" onclick="openWindow('contact')">
+            <img src="src/assets/contact.jpg" alt="Contact">
+            <p>Contact</p>
+        </div>
+    </div>
+    <div id="taskbar">
+        <div id="start-button">Start</div>
+        <div id="taskbar-icons">
+            <!-- Taskbar icons can be added here -->
+        </div>
+    </div>
+</div>
+    <div id="windows-container"></div>
+    <script src="src/js/main.js"></script>
+</body>
+</html>
