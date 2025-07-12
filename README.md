@@ -4,7 +4,7 @@
 
 <p id="description">This is a fun and interactive personal portfolio designed to look and feel like a classic Windows XP desktop. It’s built using plain HTML CSS and JavaScript and recreates that nostalgic XP vibe—complete with desktop icons draggable windows and the famous Bliss wallpaper. Each section of the site (About Me Projects Resume Contact) is represented as an icon on the desktop. Clicking one opens a floating window with the relevant content just like opening apps in Windows XP. It’s a playful twist on a typical portfolio site and a great way to show off both creativity and technical skills. If you’re a fan of retro tech or just want a portfolio that stands out this is a great way to bring a bit of old-school charm to your online presence.</p>
 
-<p align="center"><img src="https://img.shields.io/badge/Tech-HTML5-E34F26" alt="shields"><img src="https://img.shields.io/badge/Style-CSS3-1572B6" alt="shields"><img src="https://img.shields.io/badge/Scripting-JavaScript-F7DF1E" alt="shields"></p>
+<p align="center"><img src="https://img.shields.io/badge/Tech-HTML5-E34F26" alt="shields">  <img src="https://img.shields.io/badge/Style-CSS3-1572B6" alt="shields">  <img src="https://img.shields.io/badge/Scripting-JavaScript-F7DF1E" alt="shields"></p>
 
 <h2>Project Screenshots:</h2>
 
