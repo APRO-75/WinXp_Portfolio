@@ -147,23 +147,21 @@ export function Window({
     }
   }, [isResizing, handleMouseMoveResize, handleMouseUpResize]);
 
-  if (!window.isOpen) return null;
-
-  const handleWindowClick = () => {
+  const handleWindowClick = useCallback(() => {
     onBringToFront(window.id);
-  };
+  }, [onBringToFront, window.id]);
 
-  const handleCloseClick = (e: React.MouseEvent) => {
+  const handleCloseClick = useCallback((e: React.MouseEvent) => {
     e.stopPropagation();
     onClose(window.id);
-  };
+  }, [onClose, window.id]);
 
-  const handleMinimizeClick = (e: React.MouseEvent) => {
+  const handleMinimizeClick = useCallback((e: React.MouseEvent) => {
     e.stopPropagation();
     onMinimize(window.id);
-  };
+  }, [onMinimize, window.id]);
 
-  const handleWindowMouseDown = (e: React.MouseEvent) => {
+  const handleWindowMouseDown = useCallback((e: React.MouseEvent) => {
     if (!isMobile && !isDragging) {
       const direction = getResizeDirection(e);
       if (direction) {
@@ -184,7 +182,7 @@ export function Window({
       }
     }
     handleWindowClick();
-  };
+  }, [isMobile, isDragging, getResizeDirection, window.size, window.position, handleWindowClick]);
 
   const handleWindowMouseMove = useCallback((e: React.MouseEvent) => {
     if (!isMobile && !isResizing && !isDragging) {
@@ -194,6 +192,9 @@ export function Window({
       }
     }
   }, [isMobile, isResizing, isDragging, getResizeDirection]);
+
+  // Early return after all hooks are called
+  if (!window.isOpen) return null;
 
   return (
     <div
