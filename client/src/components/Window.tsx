@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback, useState } from "react";
 import { useDragAndDrop } from "@/hooks/useDragAndDrop";
 import { WindowState } from "@/types/window";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -9,6 +9,7 @@ interface WindowProps {
   onMinimize: (id: string) => void;
   onBringToFront: (id: string) => void;
   onPositionChange: (id: string, position: { x: number; y: number }) => void;
+  onSizeChange: (id: string, size: { width: number; height: number }, position?: { x: number; y: number }) => void;
   children: React.ReactNode;
 }
 
@@ -18,10 +19,18 @@ export function Window({
   onMinimize, 
   onBringToFront,
   onPositionChange,
+  onSizeChange,
   children 
 }: WindowProps) {
   const isMobile = useIsMobile();
   const windowRef = useRef<HTMLDivElement>(null);
+  const [isResizing, setIsResizing] = useState(false);
+  const [resizeData, setResizeData] = useState<{
+    direction: string;
+    startPos: { x: number; y: number };
+    startSize: { width: number; height: number };
+    startPosition: { x: number; y: number };
+  } | null>(null);
 
   const { dragRef, isDragging, handleMouseDown, handleTouchStart } = useDragAndDrop(
     (position) => {
@@ -35,6 +44,87 @@ export function Window({
     }
   );
 
+  const getResizeDirection = useCallback((e: React.MouseEvent) => {
+    if (!windowRef.current) return '';
+    
+    const rect = windowRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const threshold = 8;
+
+    const isNear = {
+      top: y <= threshold,
+      bottom: y >= rect.height - threshold,
+      left: x <= threshold,
+      right: x >= rect.width - threshold
+    };
+
+    if (isNear.top && isNear.left) return 'nw-resize';
+    if (isNear.top && isNear.right) return 'ne-resize';
+    if (isNear.bottom && isNear.left) return 'sw-resize';
+    if (isNear.bottom && isNear.right) return 'se-resize';
+    if (isNear.top) return 'n-resize';
+    if (isNear.bottom) return 's-resize';
+    if (isNear.left) return 'w-resize';
+    if (isNear.right) return 'e-resize';
+
+    return '';
+  }, []);
+
+  const handleMouseMoveResize = useCallback((e: MouseEvent) => {
+    if (!isResizing || !resizeData || !windowRef.current) return;
+
+    const deltaX = e.clientX - resizeData.startPos.x;
+    const deltaY = e.clientY - resizeData.startPos.y;
+
+    let newWidth = resizeData.startSize.width;
+    let newHeight = resizeData.startSize.height;
+    let newX = resizeData.startPosition.x;
+    let newY = resizeData.startPosition.y;
+
+    const direction = resizeData.direction;
+    const minWidth = 300;
+    const minHeight = 200;
+
+    // Handle horizontal resizing
+    if (direction.includes('e')) {
+      newWidth = Math.max(minWidth, resizeData.startSize.width + deltaX);
+    } else if (direction.includes('w')) {
+      newWidth = Math.max(minWidth, resizeData.startSize.width - deltaX);
+      if (newWidth > minWidth) {
+        newX = resizeData.startPosition.x + deltaX;
+      }
+    }
+
+    // Handle vertical resizing
+    if (direction.includes('s')) {
+      newHeight = Math.max(minHeight, resizeData.startSize.height + deltaY);
+    } else if (direction.includes('n')) {
+      newHeight = Math.max(minHeight, resizeData.startSize.height - deltaY);
+      if (newHeight > minHeight) {
+        newY = resizeData.startPosition.y + deltaY;
+      }
+    }
+
+    // Update styles immediately
+    windowRef.current.style.width = `${newWidth}px`;
+    windowRef.current.style.height = `${newHeight}px`;
+    windowRef.current.style.left = `${newX}px`;
+    windowRef.current.style.top = `${newY}px`;
+
+    // Update state
+    onSizeChange(window.id, { width: newWidth, height: newHeight }, { x: newX, y: newY });
+  }, [isResizing, resizeData, onSizeChange, window.id]);
+
+  const handleMouseUpResize = useCallback(() => {
+    if (isResizing) {
+      setIsResizing(false);
+      setResizeData(null);
+      document.body.style.cursor = '';
+      document.body.style.userSelect = '';
+    }
+  }, [isResizing]);
+
   useEffect(() => {
     if (windowRef.current && !isMobile) {
       windowRef.current.style.left = `${window.position.x}px`;
@@ -44,6 +134,18 @@ export function Window({
       windowRef.current.style.zIndex = window.zIndex.toString();
     }
   }, [window.position, window.size, window.zIndex, isMobile]);
+
+  // Add global mouse event listeners for resizing
+  useEffect(() => {
+    if (isResizing) {
+      document.addEventListener('mousemove', handleMouseMoveResize);
+      document.addEventListener('mouseup', handleMouseUpResize);
+      return () => {
+        document.removeEventListener('mousemove', handleMouseMoveResize);
+        document.removeEventListener('mouseup', handleMouseUpResize);
+      };
+    }
+  }, [isResizing, handleMouseMoveResize, handleMouseUpResize]);
 
   if (!window.isOpen) return null;
 
@@ -61,6 +163,38 @@ export function Window({
     onMinimize(window.id);
   };
 
+  const handleWindowMouseDown = (e: React.MouseEvent) => {
+    if (!isMobile && !isDragging) {
+      const direction = getResizeDirection(e);
+      if (direction) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        setIsResizing(true);
+        setResizeData({
+          direction,
+          startPos: { x: e.clientX, y: e.clientY },
+          startSize: window.size,
+          startPosition: window.position
+        });
+        
+        document.body.style.cursor = direction;
+        document.body.style.userSelect = 'none';
+        return;
+      }
+    }
+    handleWindowClick();
+  };
+
+  const handleWindowMouseMove = useCallback((e: React.MouseEvent) => {
+    if (!isMobile && !isResizing && !isDragging) {
+      const direction = getResizeDirection(e);
+      if (windowRef.current) {
+        windowRef.current.style.cursor = direction || '';
+      }
+    }
+  }, [isMobile, isResizing, isDragging, getResizeDirection]);
+
   return (
     <div
       ref={windowRef}
@@ -68,11 +202,13 @@ export function Window({
         window fixed bg-white window-shadow rounded-t pointer-events-auto
         ${window.isMinimized ? 'hidden' : ''}
         ${isDragging ? 'dragging' : ''}
+        ${isResizing ? 'resizing' : ''}
         ${isMobile ? 'top-0 left-0 w-full h-[calc(100vh-80px)] rounded-none' : ''}
         window-open
       `}
       onClick={handleWindowClick}
-      onMouseDown={handleWindowClick}
+      onMouseDown={handleWindowMouseDown}
+      onMouseMove={handleWindowMouseMove}
       data-testid={`window-${window.id}`}
     >
       <div 

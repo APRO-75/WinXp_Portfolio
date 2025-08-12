@@ -133,10 +133,14 @@ export function useWindowManager() {
     ));
   }, []);
 
-  const updateWindowSize = useCallback((windowId: string, size: { width: number; height: number }) => {
+  const updateWindowSize = useCallback((windowId: string, size: { width: number; height: number }, position?: { x: number; y: number }) => {
     setWindows(prev => prev.map(window =>
       window.id === windowId
-        ? { ...window, size }
+        ? { 
+            ...window, 
+            size,
+            ...(position && { position })
+          }
         : window
     ));
   }, []);

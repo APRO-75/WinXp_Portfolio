@@ -32,7 +32,8 @@ export function Desktop() {
     minimizeWindow,
     restoreWindow,
     bringToFront,
-    updateWindowPosition
+    updateWindowPosition,
+    updateWindowSize
   } = useWindowManager();
 
   const { handleMouseMove, handleMouseUp, handleTouchMove, handleTouchEnd } = useDragAndDrop();
@@ -99,6 +100,7 @@ export function Desktop() {
             onMinimize={minimizeWindow}
             onBringToFront={bringToFront}
             onPositionChange={updateWindowPosition}
+            onSizeChange={updateWindowSize}
           >
             {renderWindowContent(window.id)}
           </Window>

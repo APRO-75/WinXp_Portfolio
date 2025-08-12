@@ -229,6 +229,16 @@
   transform: translateY(0);
 }
 
+/* Window resizing styles */
+.window.resizing {
+  transition: none;
+  user-select: none;
+}
+
+.window:not(.resizing) {
+  transition: none;
+}
+
 /* Mobile styles */
 @media (max-width: 768px) {
   .desktop-icons {
