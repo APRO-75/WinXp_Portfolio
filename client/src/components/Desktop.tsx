@@ -9,11 +9,17 @@ import { ProjectsWindow } from "./windows/ProjectsWindow";
 import { ResumeWindow } from "./windows/ResumeWindow";
 import { ContactWindow } from "./windows/ContactWindow";
 
+// Import icon images
+import aboutIcon from "@assets/about-me_1754994898813.jpg";
+import projectsIcon from "@assets/projects_1754994898814.jpg";
+import resumeIcon from "@assets/resume_1754994898814.jpg";
+import contactIcon from "@assets/contact_1754994898813.jpg";
+
 const desktopIcons = [
-  { id: "about", title: "About Me", icon: "fas fa-user" },
-  { id: "projects", title: "Projects", icon: "fas fa-code" },
-  { id: "resume", title: "Resume", icon: "fas fa-file-pdf" },
-  { id: "contact", title: "Contact", icon: "fas fa-envelope" }
+  { id: "about", title: "About Me", icon: "fas fa-user", iconImage: aboutIcon },
+  { id: "projects", title: "Projects", icon: "fas fa-code", iconImage: projectsIcon },
+  { id: "resume", title: "Resume", icon: "fas fa-file-pdf", iconImage: resumeIcon },
+  { id: "contact", title: "Contact", icon: "fas fa-envelope", iconImage: contactIcon }
 ];
 
 export function Desktop() {
@@ -71,6 +77,7 @@ export function Desktop() {
             id={icon.id}
             title={icon.title}
             icon={icon.icon}
+            iconImage={icon.iconImage}
             onClick={openWindow}
           />
         ))}

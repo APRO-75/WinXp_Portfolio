@@ -16,7 +16,7 @@ export function useDragAndDrop(
     elementPosition: { x: 0, y: 0 }
   });
 
-  const dragRef = useRef<HTMLElement>(null);
+  const dragRef = useRef<HTMLDivElement>(null);
 
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
     if (!dragRef.current) return;

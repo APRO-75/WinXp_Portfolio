@@ -4,10 +4,11 @@ interface DesktopIconProps {
   id: string;
   title: string;
   icon: string;
+  iconImage?: string;
   onClick: (id: string) => void;
 }
 
-export function DesktopIcon({ id, title, icon, onClick }: DesktopIconProps) {
+export function DesktopIcon({ id, title, icon, iconImage, onClick }: DesktopIconProps) {
   const isMobile = useIsMobile();
 
   if (isMobile) return null;
@@ -23,8 +24,16 @@ export function DesktopIcon({ id, title, icon, onClick }: DesktopIconProps) {
       data-testid={`icon-${id}`}
     >
       <div className="icon-glow transition-all duration-200 group-hover:scale-110">
-        <div className="w-16 h-16 xp-button rounded flex items-center justify-center mb-2 group-active:bg-xp-button-pressed">
-          <i className={`${icon} text-2xl text-gray-700`}></i>
+        <div className="w-16 h-16 rounded flex items-center justify-center mb-2 overflow-hidden bg-white/10 backdrop-blur-sm border border-white/20">
+          {iconImage ? (
+            <img 
+              src={iconImage} 
+              alt={title} 
+              className="w-12 h-12 object-contain"
+            />
+          ) : (
+            <i className={`${icon} text-2xl text-gray-700`}></i>
+          )}
         </div>
       </div>
       <span className="text-white text-sm font-bold drop-shadow-lg group-hover:drop-shadow-xl">
