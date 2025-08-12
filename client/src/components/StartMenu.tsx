@@ -1,4 +1,5 @@
 import { portfolioData } from "@/data/portfolio";
+import profileImage from "@assets/Untitled design (1)_1754995203490.png";
 
 interface StartMenuProps {
   isOpen: boolean;
@@ -39,7 +40,7 @@ export function StartMenu({ isOpen, onClose, onOpenWindow }: StartMenuProps) {
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-white rounded flex items-center justify-center">
               <img 
-                src={portfolioData.about.profileImage}
+                src={profileImage}
                 alt="User avatar" 
                 className="w-6 h-6 rounded object-cover" 
               />

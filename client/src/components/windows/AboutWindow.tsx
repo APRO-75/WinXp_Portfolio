@@ -1,4 +1,5 @@
 import { portfolioData } from "@/data/portfolio";
+import profileImage from "@assets/Untitled design (1)_1754995203490.png";
 
 export function AboutWindow() {
   const { about } = portfolioData;
@@ -6,7 +7,7 @@ export function AboutWindow() {
   return (
     <div className="flex flex-col items-center space-y-4">
       <img 
-        src={about.profileImage}
+        src={profileImage}
         alt={`${about.name} profile photo`}
         className="w-24 h-24 rounded-full border-2 border-xp-blue object-cover"
         data-testid="profile-image"
