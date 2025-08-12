@@ -36,10 +36,7 @@ export function Window({
 
   const { dragRef, isDragging, handleMouseDown, handleTouchStart } = useDragAndDrop(
     (position) => {
-      if (windowRef.current) {
-        windowRef.current.style.left = `${position.x}px`;
-        windowRef.current.style.top = `${position.y}px`;
-      }
+      onPositionChange(window.id, position);
     },
     (position) => {
       onPositionChange(window.id, position);
