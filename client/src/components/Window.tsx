@@ -211,7 +211,7 @@ export function Window({
         ${window.isMinimized ? 'hidden' : ''}
         ${isDragging ? 'dragging' : ''}
         ${isResizing ? 'resizing' : ''}
-        ${window.isMaximized ? 'top-0 left-0 w-full h-[calc(100vh-80px)] rounded-none' : ''}
+        ${window.isMaximized ? 'maximized top-0 left-0 w-full h-[calc(100vh-80px)] rounded-none' : ''}
         ${isMobile ? 'top-0 left-0 w-full h-[calc(100vh-80px)] rounded-none' : ''}
         window-open
       `}
@@ -222,9 +222,9 @@ export function Window({
     >
       <div 
         ref={dragRef}
-        className="window-header xp-window-header text-white p-2 rounded-t flex justify-between items-center cursor-move"
-        onMouseDown={!isMobile ? handleMouseDown : undefined}
-        onTouchStart={!isMobile ? handleTouchStart : undefined}
+        className={`window-header xp-window-header text-white p-2 rounded-t flex justify-between items-center ${window.isMaximized ? 'cursor-default' : 'cursor-move'}`}
+        onMouseDown={!isMobile && !window.isMaximized ? handleMouseDown : undefined}
+        onTouchStart={!isMobile && !window.isMaximized ? handleTouchStart : undefined}
         data-testid={`window-header-${window.id}`}
       >
         <div className="flex items-center space-x-2">

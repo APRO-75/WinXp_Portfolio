@@ -190,6 +190,15 @@
   z-index: 9999 !important;
 }
 
+/* Ensure windows have higher z-index than desktop icons */
+.window {
+  z-index: 1000;
+}
+
+.window.maximized {
+  z-index: 10000 !important;
+}
+
 .window-content {
   scrollbar-width: thin;
   scrollbar-color: #C0C0C0 #F0F0F0;

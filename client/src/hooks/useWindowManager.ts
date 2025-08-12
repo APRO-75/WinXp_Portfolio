@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
 import { WindowState, WindowConfig } from "@/types/window";
 
-const INITIAL_Z_INDEX = 100;
+const INITIAL_Z_INDEX = 1000;
 
 const windowConfigs: WindowConfig[] = [
   {

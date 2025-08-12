@@ -42,6 +42,16 @@ export const portfolioData = {
       icon: "fas fa-gamepad",
       iconColor: "bg-orange-500",
       githubUrl: "https://github.com/APRO-75"
+    },
+    {
+      id: 5,
+      title: "XP Nostalgia Portfolio",
+      description: "Windows XP-style interactive portfolio website with authentic desktop experience, draggable windows, and nostalgic UI elements.",
+      icon: "fas fa-desktop",
+      iconColor: "bg-blue-600",
+      githubUrl: "https://github.com/APRO-75/windows-xp-portfolio",
+      liveUrl: "https://your-deployment-url.com",
+      technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"]
     }
   ],
   contact: {
