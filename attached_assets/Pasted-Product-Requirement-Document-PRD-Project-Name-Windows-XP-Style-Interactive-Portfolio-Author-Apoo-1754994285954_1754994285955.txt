@@ -1,0 +1,181 @@
+Product Requirement Document (PRD)
+Project Name: Windows XP–Style Interactive Portfolio
+Author: Apoorva Prakash
+Version: 1.0
+Date: 12 Aug 2025
+
+1. Overview
+The goal is to create a personal portfolio website styled like the Windows XP desktop environment, but with a modern, aesthetic, and usable twist.
+The site should mimic a nostalgic Windows XP experience while presenting my skills, resume, and projects in an interactive, fun, and professional way.
+
+2. Objectives
+Primary Goal:
+Showcase my professional profile, projects, and resume in a creative, XP-inspired interactive desktop interface.
+
+Secondary Goals:
+
+Make the site engaging for users (recruiters, peers, clients) through nostalgic UI.
+
+Ensure functionality and responsiveness across desktop, tablet, and mobile.
+
+Keep performance optimized despite visual effects.
+
+Ensure the design looks premium, polished, and professional.
+
+3. Target Audience
+Recruiters — to get a quick yet memorable understanding of my skills and portfolio.
+
+Peers & Collaborators — to showcase my creativity and coding style.
+
+General Visitors — to engage with a fun, interactive experience.
+
+4. Core Features
+4.1 Desktop UI
+Bliss wallpaper background.
+
+Icons aligned vertically on left side (About Me, Projects, Resume, Contact).
+
+Hover effects: slight zoom, glow effect.
+
+Double-click or single-click to open windows.
+
+4.2 Taskbar & Start Menu
+Fixed taskbar at bottom with gradient background.
+
+Green “Start” button opens XP-style start menu.
+
+Start menu includes shortcuts to open all main windows.
+
+Space for optional clock on the right.
+
+4.3 Windows
+Draggable, resizable windows.
+
+Modern glassy look but with XP color scheme.
+
+Window controls: Close (X), Minimize, Maximize.
+
+Content varies per section:
+
+About Me: Bio, profile photo.
+
+Projects: Clickable project cards with GitHub links.
+
+Resume: Embedded PDF viewer.
+
+Contact: Clickable email, LinkedIn, GitHub links.
+
+4.4 Interaction & Behavior
+Z-index management — clicked window comes to front.
+
+Windows remember last position (session storage).
+
+Start menu auto-hides after selection.
+
+Mobile adaptation: icons in grid layout, windows full-screen.
+
+5. Content Requirements
+About Me:
+
+Short introduction about Apoorva Prakash.
+
+Profile picture.
+
+Projects:
+
+Sign Language Detector (GitHub link).
+
+Carbon Footprint Calculator (GitHub link).
+
+AutoCat CLI Wrapper (GitHub link).
+
+Gamified Constitution Learning Tool (GitHub link).
+
+Resume:
+
+Embed resume.pdf stored in assets folder.
+
+Contact:
+
+Email: ap75ro@gmail.com.
+
+LinkedIn: https://linkedin.com/in/apoorva-prakash-a00196265/.
+
+GitHub: https://github.com/APRO-75.
+
+6. Technical Requirements
+6.1 Tech Stack
+Frontend: HTML, CSS, JavaScript (Vanilla).
+
+No frameworks required unless needed for animations or drag/resizing.
+
+Optional: GreenSock (GSAP) or anime.js for animations.
+
+6.2 Performance
+Load time under 2 seconds.
+
+Optimized images (WebP if possible).
+
+Minimal JS dependencies.
+
+6.3 Browser Compatibility
+Chrome, Edge, Firefox, Safari (latest versions).
+
+Graceful fallback for unsupported browsers.
+
+6.4 Responsiveness
+Desktop-first design.
+
+Tablet/mobile layout with touch-based dragging.
+
+7. Visual & Aesthetic Requirements
+Maintain XP nostalgia but modernized:
+
+Subtle gradients.
+
+Softer shadows.
+
+Slight transparency on windows.
+
+Clean, readable fonts (Tahoma, Segoe UI as fallback).
+
+Smooth animations for window opening/closing.
+
+8. Milestones
+Design Phase (Wireframes + Final Mockup) — 1 week.
+
+Core Desktop Layout & Icons — 3 days.
+
+Taskbar & Start Menu Functionality — 2 days.
+
+Window System Implementation — 5 days.
+
+Content Integration (About Me, Projects, Resume, Contact) — 2 days.
+
+Responsive Design + Mobile Support — 3 days.
+
+Testing & Bug Fixes — 3 days.
+
+Deployment & Optimization — 2 days.
+
+9. Success Criteria
+All sections accessible through icons and start menu.
+
+Resume loads properly in embedded viewer.
+
+Smooth drag, resize, and z-index management of windows.
+
+No broken links or layout issues on desktop/mobile.
+
+Professional yet fun XP aesthetic.
+
+10. Future Enhancements (Optional)
+Drag-and-drop icon rearrangement.
+
+Taskbar live clock.
+
+XP startup sound effect.
+
+Multiple theme wallpapers.
+
+Window snapping to edges.
