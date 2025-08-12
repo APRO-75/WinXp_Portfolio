@@ -22,6 +22,28 @@ export function StartMenu({ isOpen, onClose, onOpenWindow }: StartMenuProps) {
     onClose();
   };
 
+  const handleControlPanel = () => {
+    onOpenWindow('control-panel');
+    onClose();
+  };
+
+  const handleHelpAndSupport = () => {
+    onOpenWindow('help-support');
+    onClose();
+  };
+
+  const handleTurnOff = () => {
+    if (confirm('Are you sure you want to turn off the computer?')) {
+      // Close the tab/window
+      if (window.opener) {
+        window.close();
+      } else {
+        // For browsers that don't allow window.close(), show a message
+        alert('Thank you for visiting my portfolio! You can now close this tab.');
+      }
+    }
+  };
+
   return (
     <>
       {/* Backdrop */}
@@ -67,12 +89,20 @@ export function StartMenu({ isOpen, onClose, onOpenWindow }: StartMenuProps) {
           <div className="border-t border-gray-300 my-1 mx-2"></div>
           
           {/* System Items */}
-          <div className="start-menu-item flex items-center space-x-3 px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer text-sm">
+          <div 
+            className="start-menu-item flex items-center space-x-3 px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer text-sm"
+            onClick={handleControlPanel}
+            data-testid="start-menu-control-panel"
+          >
             <i className="fas fa-cog w-4 text-current"></i>
             <span>Control Panel</span>
           </div>
           
-          <div className="start-menu-item flex items-center space-x-3 px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer text-sm">
+          <div 
+            className="start-menu-item flex items-center space-x-3 px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer text-sm"
+            onClick={handleHelpAndSupport}
+            data-testid="start-menu-help-support"
+          >
             <i className="fas fa-question-circle w-4 text-current"></i>
             <span>Help and Support</span>
           </div>
@@ -80,7 +110,11 @@ export function StartMenu({ isOpen, onClose, onOpenWindow }: StartMenuProps) {
           {/* Bottom Section */}
           <div className="border-t border-gray-300 my-1 mx-2"></div>
           
-          <div className="start-menu-item flex items-center space-x-3 px-4 py-2 hover:bg-red-500 hover:text-white cursor-pointer text-sm font-bold">
+          <div 
+            className="start-menu-item flex items-center space-x-3 px-4 py-2 hover:bg-red-500 hover:text-white cursor-pointer text-sm font-bold"
+            onClick={handleTurnOff}
+            data-testid="start-menu-turn-off"
+          >
             <i className="fas fa-power-off w-4 text-current"></i>
             <span>Turn Off Computer</span>
           </div>

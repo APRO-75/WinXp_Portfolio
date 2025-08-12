@@ -217,6 +217,18 @@
   background-repeat: no-repeat;
 }
 
+/* Control Panel and Help styling */
+.control-panel-item:hover,
+.help-topic:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.control-panel-item:active,
+.help-topic:active {
+  transform: translateY(0);
+}
+
 /* Mobile styles */
 @media (max-width: 768px) {
   .desktop-icons {

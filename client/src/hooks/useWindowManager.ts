@@ -31,6 +31,20 @@ const windowConfigs: WindowConfig[] = [
     icon: "fas fa-envelope", 
     defaultPosition: { x: 176, y: 128 },
     defaultSize: { width: 320, height: 264 }
+  },
+  {
+    id: "control-panel",
+    title: "Control Panel",
+    icon: "fas fa-cog",
+    defaultPosition: { x: 200, y: 150 },
+    defaultSize: { width: 600, height: 450 }
+  },
+  {
+    id: "help-support",
+    title: "Help and Support",
+    icon: "fas fa-question-circle",
+    defaultPosition: { x: 220, y: 170 },
+    defaultSize: { width: 550, height: 400 }
   }
 ];
 

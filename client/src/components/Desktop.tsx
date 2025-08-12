@@ -8,6 +8,8 @@ import { AboutWindow } from "./windows/AboutWindow";
 import { ProjectsWindow } from "./windows/ProjectsWindow";
 import { ResumeWindow } from "./windows/ResumeWindow";
 import { ContactWindow } from "./windows/ContactWindow";
+import { ControlPanelWindow } from "./windows/ControlPanelWindow";
+import { HelpSupportWindow } from "./windows/HelpSupportWindow";
 
 // Import icon images
 import aboutIcon from "@assets/about-me_1754994898813.jpg";
@@ -59,6 +61,10 @@ export function Desktop() {
         return <ResumeWindow />;
       case 'contact':
         return <ContactWindow />;
+      case 'control-panel':
+        return <ControlPanelWindow />;
+      case 'help-support':
+        return <HelpSupportWindow />;
       default:
         return <div>Window content not found</div>;
     }
