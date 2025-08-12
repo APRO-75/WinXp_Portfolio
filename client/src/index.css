@@ -122,11 +122,56 @@
 }
 
 .xp-start-button {
-  background: linear-gradient(to right, var(--xp-green) 0%, var(--xp-green-dark) 100%);
+  background: linear-gradient(to bottom, 
+    #3d95ff 0%, 
+    #1e5799 8%, 
+    #1e5799 40%, 
+    #3d95ff 88%, 
+    #3d95ff 93%, 
+    #005bff 95%, 
+    #003dd7 96%, 
+    #003dd7 100%);
+  border: 1px outset #c0c0c0;
+  color: white;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  border-radius: 0;
+  height: 30px;
+  padding: 2px 12px 2px 8px;
+}
+
+.xp-start-button:hover {
+  background: linear-gradient(to bottom, 
+    #4da6ff 0%, 
+    #2e68a9 8%, 
+    #2e68a9 40%, 
+    #4da6ff 88%, 
+    #4da6ff 93%, 
+    #1570ff 95%, 
+    #1350e7 96%, 
+    #1350e7 100%);
+  border: 1px outset #d0d0d0;
+}
+
+.xp-start-button:active {
+  background: linear-gradient(to bottom, 
+    #2e68a9 0%, 
+    #1e5799 8%, 
+    #1e5799 40%, 
+    #2e68a9 88%, 
+    #2e68a9 93%, 
+    #003dd7 95%, 
+    #002db7 96%, 
+    #002db7 100%);
+  border: 1px inset #a0a0a0;
+  padding: 3px 11px 1px 9px;
 }
 
 .xp-taskbar {
   background: linear-gradient(to bottom, #245EDC 0%, #1941A5 50%, #1941A5 51%, #245EDC 100%);
+  border-top: 1px solid #0831D9;
 }
 
 .window-shadow {
@@ -166,7 +211,7 @@
 
 /* Desktop background */
 .desktop-background {
-  background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1080');
+  background-image: url('@assets/bliss-wallpaper_1754995530957.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

@@ -19,24 +19,24 @@ export function DesktopIcon({ id, title, icon, iconImage, onClick }: DesktopIcon
 
   return (
     <div 
-      className="desktop-icon flex flex-col items-center cursor-pointer group select-none"
+      className="desktop-icon flex flex-col items-center cursor-pointer group select-none w-16 text-center"
       onDoubleClick={handleDoubleClick}
       data-testid={`icon-${id}`}
     >
-      <div className="icon-glow transition-all duration-200 group-hover:scale-110">
-        <div className="w-16 h-16 rounded flex items-center justify-center mb-2 overflow-hidden bg-white/10 backdrop-blur-sm border border-white/20">
+      <div className="transition-all duration-200 group-hover:scale-105">
+        <div className="w-8 h-8 flex items-center justify-center mb-1">
           {iconImage ? (
             <img 
               src={iconImage} 
               alt={title} 
-              className="w-12 h-12 object-contain"
+              className="w-8 h-8 object-contain filter drop-shadow-sm"
             />
           ) : (
-            <i className={`${icon} text-2xl text-gray-700`}></i>
+            <i className={`${icon} text-2xl text-white drop-shadow`}></i>
           )}
         </div>
       </div>
-      <span className="text-white text-sm font-bold drop-shadow-lg group-hover:drop-shadow-xl">
+      <span className="text-white text-xs font-normal drop-shadow-md text-center max-w-16 leading-tight">
         {title}
       </span>
     </div>

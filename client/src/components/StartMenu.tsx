@@ -33,33 +33,57 @@ export function StartMenu({ isOpen, onClose, onOpenWindow }: StartMenuProps) {
       
       {/* Start Menu */}
       <div 
-        className="fixed bottom-10 left-0 w-64 bg-white border border-gray-400 window-shadow rounded-tr z-50"
+        className="fixed bottom-10 left-0 w-80 bg-white border-2 border-gray-400 window-shadow z-50"
+        style={{ borderStyle: 'outset' }}
         data-testid="start-menu"
       >
-        <div className="xp-window-header text-white p-3 text-sm font-bold">
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-white rounded flex items-center justify-center">
-              <img 
-                src={profileImage}
-                alt="User avatar" 
-                className="w-6 h-6 rounded object-cover" 
-              />
-            </div>
-            <span>{portfolioData.about.name}</span>
+        {/* User Header */}
+        <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-3 flex items-center space-x-3">
+          <div className="w-8 h-8 bg-white rounded flex items-center justify-center overflow-hidden">
+            <img 
+              src={profileImage}
+              alt="User avatar" 
+              className="w-8 h-8 object-cover" 
+            />
           </div>
+          <span className="font-bold text-sm">{portfolioData.about.name}</span>
         </div>
-        <div className="p-2">
+        
+        {/* Menu Items */}
+        <div className="p-1">
           {menuItems.map((item) => (
             <div
               key={item.id}
-              className="start-menu-item flex items-center space-x-3 p-2 hover:bg-blue-100 cursor-pointer rounded"
+              className="start-menu-item flex items-center space-x-3 px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer text-sm"
               onClick={() => handleItemClick(item.id)}
               data-testid={`start-menu-${item.id}`}
             >
-              <i className={`${item.icon} w-4 text-gray-600`}></i>
-              <span className="text-sm">{item.title}</span>
+              <i className={`${item.icon} w-4 text-current`}></i>
+              <span>{item.title}</span>
             </div>
           ))}
+          
+          {/* Separator */}
+          <div className="border-t border-gray-300 my-1 mx-2"></div>
+          
+          {/* System Items */}
+          <div className="start-menu-item flex items-center space-x-3 px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer text-sm">
+            <i className="fas fa-cog w-4 text-current"></i>
+            <span>Control Panel</span>
+          </div>
+          
+          <div className="start-menu-item flex items-center space-x-3 px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer text-sm">
+            <i className="fas fa-question-circle w-4 text-current"></i>
+            <span>Help and Support</span>
+          </div>
+          
+          {/* Bottom Section */}
+          <div className="border-t border-gray-300 my-1 mx-2"></div>
+          
+          <div className="start-menu-item flex items-center space-x-3 px-4 py-2 hover:bg-red-500 hover:text-white cursor-pointer text-sm font-bold">
+            <i className="fas fa-power-off w-4 text-current"></i>
+            <span>Turn Off Computer</span>
+          </div>
         </div>
       </div>
     </>

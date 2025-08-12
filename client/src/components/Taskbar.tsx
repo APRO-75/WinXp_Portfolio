@@ -75,14 +75,14 @@ export function Taskbar({ windows, onOpenWindow, onRestoreWindow }: TaskbarProps
       <div className="fixed bottom-0 left-0 right-0 h-10 xp-taskbar border-t border-gray-400 flex items-center px-2 z-50">
         {/* Start Button */}
         <button 
-          className="xp-start-button text-white px-4 py-1 rounded-r text-sm font-bold border border-gray-400 hover:brightness-110 flex items-center space-x-2"
+          className="xp-start-button flex items-center space-x-2"
           onClick={toggleStartMenu}
           data-testid="button-start"
         >
           <div className="w-4 h-4 bg-white rounded-sm flex items-center justify-center">
             <div className="w-2 h-2 bg-red-500 rounded-sm"></div>
           </div>
-          <span>Start</span>
+          <span>start</span>
         </button>
 
         {/* Window Buttons */}

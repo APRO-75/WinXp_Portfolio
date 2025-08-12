@@ -70,7 +70,7 @@ export function Desktop() {
       <div className="fixed inset-0 desktop-background" />
 
       {/* Desktop Icons */}
-      <div className="desktop-icons fixed top-4 left-4 space-y-6 z-10">
+      <div className="desktop-icons fixed top-4 left-4 space-y-4 z-10">
         {desktopIcons.map((icon) => (
           <DesktopIcon
             key={icon.id}
