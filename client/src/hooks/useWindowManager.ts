@@ -126,8 +126,17 @@ export function useWindowManager() {
             isMinimized: false,
             zIndex: currentZIndex + 1,
             ...(windowState.isMaximized 
-              ? {} // When un-maximizing, keep current position/size
+              ? { 
+                  // Restore to previous position and size
+                  position: windowState.previousPosition || windowState.position,
+                  size: windowState.previousSize || windowState.size,
+                  previousPosition: undefined,
+                  previousSize: undefined
+                }
               : { 
+                  // Store current position/size before maximizing
+                  previousPosition: windowState.position,
+                  previousSize: windowState.size,
                   position: { x: 0, y: 0 },
                   size: { 
                     width: typeof window !== 'undefined' ? window.innerWidth : 1200, 

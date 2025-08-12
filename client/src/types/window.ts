@@ -8,6 +8,8 @@ export interface WindowState {
   position: { x: number; y: number };
   size: { width: number; height: number };
   zIndex: number;
+  previousPosition?: { x: number; y: number };
+  previousSize?: { width: number; height: number };
 }
 
 export interface WindowConfig {

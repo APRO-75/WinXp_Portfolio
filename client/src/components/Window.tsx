@@ -215,6 +215,14 @@ export function Window({
         ${isMobile ? 'top-0 left-0 w-full h-[calc(100vh-80px)] rounded-none' : ''}
         window-open
       `}
+      style={{
+        left: window.isMaximized || isMobile ? 0 : window.position.x,
+        top: window.isMaximized || isMobile ? 0 : window.position.y,
+        width: window.isMaximized || isMobile ? '100%' : window.size.width,
+        height: window.isMaximized || isMobile ? 'calc(100vh - 80px)' : window.size.height,
+        zIndex: window.zIndex,
+        transition: 'all 0.2s ease-in-out',
+      }}
       onClick={handleWindowClick}
       onMouseDown={handleWindowMouseDown}
       onMouseMove={handleWindowMouseMove}
