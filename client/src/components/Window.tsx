@@ -7,6 +7,7 @@ interface WindowProps {
   window: WindowState;
   onClose: (id: string) => void;
   onMinimize: (id: string) => void;
+  onMaximize: (id: string) => void;
   onBringToFront: (id: string) => void;
   onPositionChange: (id: string, position: { x: number; y: number }) => void;
   onSizeChange: (id: string, size: { width: number; height: number }, position?: { x: number; y: number }) => void;
@@ -17,6 +18,7 @@ export function Window({
   window, 
   onClose, 
   onMinimize, 
+  onMaximize,
   onBringToFront,
   onPositionChange,
   onSizeChange,
@@ -161,8 +163,13 @@ export function Window({
     onMinimize(window.id);
   }, [onMinimize, window.id]);
 
+  const handleMaximizeClick = useCallback((e: React.MouseEvent) => {
+    e.stopPropagation();
+    onMaximize(window.id);
+  }, [onMaximize, window.id]);
+
   const handleWindowMouseDown = useCallback((e: React.MouseEvent) => {
-    if (!isMobile && !isDragging) {
+    if (!isMobile && !isDragging && !window.isMaximized) {
       const direction = getResizeDirection(e);
       if (direction) {
         e.preventDefault();
@@ -182,16 +189,16 @@ export function Window({
       }
     }
     handleWindowClick();
-  }, [isMobile, isDragging, getResizeDirection, window.size, window.position, handleWindowClick]);
+  }, [isMobile, isDragging, window.isMaximized, getResizeDirection, window.size, window.position, handleWindowClick]);
 
   const handleWindowMouseMove = useCallback((e: React.MouseEvent) => {
-    if (!isMobile && !isResizing && !isDragging) {
+    if (!isMobile && !isResizing && !isDragging && !window.isMaximized) {
       const direction = getResizeDirection(e);
       if (windowRef.current) {
         windowRef.current.style.cursor = direction || '';
       }
     }
-  }, [isMobile, isResizing, isDragging, getResizeDirection]);
+  }, [isMobile, isResizing, isDragging, window.isMaximized, getResizeDirection]);
 
   // Early return after all hooks are called
   if (!window.isOpen) return null;
@@ -204,6 +211,7 @@ export function Window({
         ${window.isMinimized ? 'hidden' : ''}
         ${isDragging ? 'dragging' : ''}
         ${isResizing ? 'resizing' : ''}
+        ${window.isMaximized ? 'top-0 left-0 w-full h-[calc(100vh-80px)] rounded-none' : ''}
         ${isMobile ? 'top-0 left-0 w-full h-[calc(100vh-80px)] rounded-none' : ''}
         window-open
       `}
@@ -233,9 +241,10 @@ export function Window({
           </button>
           <button 
             className="w-5 h-5 xp-button text-xs flex items-center justify-center hover:bg-gray-200"
+            onClick={handleMaximizeClick}
             data-testid={`button-maximize-${window.id}`}
           >
-            □
+            {window.isMaximized ? '🗗' : '□'}
           </button>
           <button 
             className="w-5 h-5 bg-red-500 border border-red-600 text-white text-xs flex items-center justify-center hover:bg-red-600"

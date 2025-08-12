@@ -1,49 +1,73 @@
-# 🖥️ Windows XP Portfolio - Apoorva Prakash
+# 🖥️ Windows XP Portfolio
+
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 
 A nostalgic Windows XP-style interactive portfolio website that recreates the authentic Windows XP desktop experience as a creative way to showcase professional skills, projects, and resume. Built with modern web technologies while maintaining the classic XP aesthetic.
 
-![Windows XP Portfolio](https://img.shields.io/badge/Windows-XP_Style-0078d4?style=for-the-badge&logo=windows&logoColor=white)
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+## ✨ Live Demo
 
-## ✨ Features
+[View Live Portfolio](your-deployment-url-here) • [Report Bug](issues) • [Request Feature](issues)
+
+## 📸 Screenshots
+
+| Desktop View | Mobile View |
+|--------------|-------------|
+| ![Desktop](screenshots/desktop.png) | ![Mobile](screenshots/mobile.png) |
+
+## 🚀 Features
 
 ### 🎨 Authentic Windows XP Experience
-- **Classic Desktop Environment**: Complete with the iconic Bliss wallpaper and XP styling
-- **Draggable Windows**: Fully functional window system with drag-and-drop support
-- **Start Menu**: Authentic Windows XP Start menu with user profile and system options
-- **Taskbar**: Classic blue gradient taskbar with Start button and window management
-- **Desktop Icons**: Clean, borderless icons matching the original XP aesthetic
+- **Classic Desktop Environment**: Complete with iconic Bliss wallpaper and XP styling
+- **Fully Functional Windows**: Draggable, resizable, minimizable, and maximizable windows
+- **Authentic Start Menu**: Windows XP Start menu with user profile and system options
+- **XP Taskbar**: Classic blue gradient taskbar with Start button and active window management
+- **Desktop Icons**: Clean, authentic desktop icons with hover effects
 
-### 📁 Portfolio Sections
-- **About Me**: Professional background, skills, and education details
-- **Projects**: Showcase of development work and technical projects
-- **Resume**: Embedded PDF resume viewer with download functionality
-- **Contact**: Professional contact information and social media links
+### 📁 Portfolio Content
+- **About Section**: Professional background, skills, education, and experience
+- **Projects Showcase**: Interactive project gallery with descriptions, technologies, and links
+- **Resume Viewer**: Embedded PDF resume with download functionality
+- **Contact Information**: Professional contact details and social media integration
 
-### ⚙️ System Windows
-- **Control Panel**: Interactive system settings panel with XP-style categories
-- **Help & Support**: Comprehensive help center with navigation tips and contact info
-- **Turn Off Computer**: Realistic shutdown functionality that closes the browser tab
+### ⚙️ System Features
+- **Control Panel**: Interactive XP-style system settings panel
+- **Help & Support**: Comprehensive help center with navigation guide
+- **Window Management**: Full window controls with session persistence
 
-### 📱 Modern Features
+### 📱 Modern Enhancements
 - **Responsive Design**: Mobile-optimized with adaptive layouts
-- **Touch Support**: Full touch gesture support for mobile devices
-- **Type Safety**: Built with TypeScript for enhanced development experience
-- **Performance**: Optimized with Vite for fast loading and hot reload
+- **Touch Support**: Complete touch gesture support for mobile devices
+- **Performance Optimized**: Fast loading with efficient rendering
+- **Cross-browser Compatible**: Works seamlessly across all modern browsers
 
-## 🚀 Quick Start
+## 🛠️ Technology Stack
+
+| Technology | Purpose | Version |
+|------------|---------|---------|
+| **React** | Frontend framework | 18+ |
+| **TypeScript** | Type safety | 5+ |
+| **Vite** | Build tool and dev server | 5+ |
+| **Tailwind CSS** | Styling framework | 3+ |
+| **Wouter** | Lightweight routing | 3+ |
+| **TanStack Query** | State management | 5+ |
+| **Express.js** | Backend server | 4+ |
+
+## 🚦 Getting Started
 
 ### Prerequisites
-- **Node.js** (version 18 or higher)
-- **npm** or **yarn** package manager
+
+- **Node.js** 18+ 
+- **npm** or **yarn**
+- **Git**
 
 ### Installation
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/APRO-75/windows-xp-portfolio.git
+   git clone https://github.com/your-username/windows-xp-portfolio.git
    cd windows-xp-portfolio
    ```
 
@@ -52,238 +76,237 @@ A nostalgic Windows XP-style interactive portfolio website that recreates the au
    npm install
    ```
 
-3. **Start the development server**
+3. **Start development server**
    ```bash
    npm run dev
    ```
 
-4. **Open your browser**
-   Navigate to `http://localhost:5000` to view the portfolio
+4. **Open in browser**
+   ```
+   http://localhost:5000
+   ```
 
-## 🛠️ Available Scripts
+## 📜 Available Scripts
 
 ```bash
-# Start development server
-npm run dev
+# Development
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run preview      # Preview production build
+npm run type-check   # TypeScript type checking
 
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
-
-# Type checking
-npm run type-check
-
-# Database operations (if using database features)
-npm run db:push
-npm run db:studio
+# Database (if using database features)
+npm run db:push      # Push database schema
+npm run db:studio    # Open database studio
 ```
 
-## 📋 Project Structure
+## 📂 Project Structure
 
 ```
 windows-xp-portfolio/
-├── client/                    # Frontend React application
+├── client/                     # Frontend React application
 │   ├── src/
-│   │   ├── components/       # React components
-│   │   │   ├── windows/     # Window content components
-│   │   │   ├── Desktop.tsx  # Main desktop component
-│   │   │   ├── Taskbar.tsx  # Taskbar with Start menu
-│   │   │   └── Window.tsx   # Window wrapper component
-│   │   ├── hooks/           # Custom React hooks
-│   │   ├── data/            # Static data and portfolio content
-│   │   ├── types/           # TypeScript type definitions
-│   │   └── index.css        # Global styles and XP theming
-├── server/                   # Express.js backend (minimal)
-├── shared/                   # Shared types and schemas
-├── attached_assets/          # Static assets and images
+│   │   ├── components/        # React components
+│   │   │   ├── windows/      # Portfolio window components
+│   │   │   ├── Desktop.tsx   # Main desktop interface
+│   │   │   ├── Window.tsx    # Window wrapper component
+│   │   │   └── Taskbar.tsx   # Bottom taskbar
+│   │   ├── hooks/            # Custom React hooks
+│   │   ├── data/             # Portfolio data and content
+│   │   ├── types/            # TypeScript definitions
+│   │   └── index.css         # Global styles and XP theme
+├── server/                    # Express.js backend
+├── shared/                    # Shared types and schemas
+├── attached_assets/           # Static assets and images
 └── README.md
 ```
 
+## 🔧 Architecture
+
+### Component Hierarchy
+- **Desktop**: Main container managing the desktop environment
+- **Window Management**: Custom window system with advanced features
+- **Portfolio Windows**: Modular content components (About, Projects, Resume, Contact)
+- **System Windows**: Control Panel and Help & Support
+
+### State Management
+- **Window Manager Hook**: Manages window states, positions, and z-index
+- **Drag & Drop Hook**: Handles window dragging with touch support
+- **Session Persistence**: Saves window positions across browser sessions
+
+### Styling Strategy
+- **Custom CSS Variables**: Windows XP color palette
+- **Tailwind Extensions**: XP-specific utilities and components
+- **Responsive Design**: Mobile-first approach with desktop enhancements
+
 ## 🎯 Key Components
 
-### Desktop Environment
-- **Desktop.tsx**: Main container managing the desktop interface with icon grid
-- **Window.tsx**: Fully draggable and resizable window wrapper with authentic XP styling
-- **Taskbar.tsx**: Bottom taskbar with Start button and active window management
-- **DesktopIcon.tsx**: Interactive desktop icons with hover effects
+### Core Components
+- **Desktop.tsx**: Main desktop interface with icon management
+- **Window.tsx**: Draggable, resizable, maximizable window wrapper
+- **Taskbar.tsx**: Bottom taskbar with Start menu and window management
+- **DesktopIcon.tsx**: Interactive desktop icons
 
 ### Portfolio Windows
-- **AboutWindow.tsx**: Professional background, skills, and education details
-- **ProjectsWindow.tsx**: Interactive project showcase with links and descriptions
-- **ResumeWindow.tsx**: Embedded PDF resume viewer with download functionality
-- **ContactWindow.tsx**: Contact information with social media integration
+- **AboutWindow.tsx**: Professional background and skills
+- **ProjectsWindow.tsx**: Project showcase with interactive elements
+- **ResumeWindow.tsx**: PDF resume viewer and download
+- **ContactWindow.tsx**: Contact information and social links
 
 ### System Windows
-- **ControlPanelWindow.tsx**: Authentic XP-style system settings panel
-- **HelpSupportWindow.tsx**: Comprehensive help center and navigation guide
+- **ControlPanelWindow.tsx**: XP-style system settings
+- **HelpSupportWindow.tsx**: Help center and navigation guide
 
-## 🔧 Recent Improvements (Latest Updates)
+## 🔄 Recent Updates
 
-### ✅ React Hooks Optimization (January 2025)
-- **Fixed React Hooks Rule Violations**: Resolved "Rendered more hooks than during the previous render" errors
-- **Improved useIsMobile Hook**: Eliminated undefined state issues causing rendering inconsistencies
-- **Enhanced Window Component Stability**: Restructured hook calling order for consistent behavior
-- **Performance Optimizations**: Added proper useCallback dependencies and memoization
+### ✅ Enhanced Window Management (January 2025)
+- **Fixed Maximize Functionality**: Fully functional maximize/restore with proper state management
+- **Improved Window Controls**: All window buttons (minimize, maximize, close) now work correctly
+- **React Hooks Optimization**: Resolved all hooks rule violations for stable performance
+- **Enhanced Mobile Support**: Better touch interactions and responsive behavior
 
-### ✅ Window Management Enhancements
-- **Advanced Resize Functionality**: 8-directional window resizing with visual cursor feedback
-- **Touch Device Support**: Full mobile and tablet compatibility with touch gestures
-- **Session Persistence**: Window positions saved across browser sessions
-- **Z-Index Management**: Proper window layering and focus handling
+### ✅ Performance Improvements
+- **Optimized Re-rendering**: Proper useCallback and memoization implementation
+- **Session Persistence**: Window positions automatically saved and restored
+- **Cross-browser Compatibility**: Tested and optimized for all major browsers
 
 ## 🎨 Customization
 
 ### Updating Portfolio Content
-Edit the portfolio data in `client/src/data/portfolio.ts`:
+Edit portfolio data in `client/src/data/portfolio.ts`:
 
 ```typescript
 export const portfolioData = {
   about: {
     name: "Your Name",
-    title: "Your Title",
-    description: "Your description...",
-    // ... more fields
+    title: "Your Professional Title",
+    description: "Your professional summary...",
+    skills: ["Skill 1", "Skill 2", "Skill 3"],
+    education: [
+      {
+        degree: "Your Degree",
+        institution: "Your University",
+        year: "2020-2024"
+      }
+    ]
   },
   projects: [
     {
       title: "Project Name",
       description: "Project description",
-      // ... more project details
+      technologies: ["React", "TypeScript", "Node.js"],
+      liveUrl: "https://project-demo.com",
+      githubUrl: "https://github.com/your-username/project"
     }
-  ]
+  ],
+  contact: {
+    email: "your.email@example.com",
+    linkedin: "https://linkedin.com/in/yourprofile",
+    github: "https://github.com/yourusername"
+  }
 };
 ```
 
-### Browser Compatibility
-- ✅ **Chrome**: Full support with all features
-- ✅ **Firefox**: Complete compatibility including drag/drop
-- ✅ **Safari**: Full support on macOS and iOS
-- ✅ **Edge**: Microsoft Edge with full Windows XP nostalgia
-- ✅ **Mobile Browsers**: Responsive design adapts to touch interfaces
+### Changing Visual Assets
+Replace images in `attached_assets/`:
+- Desktop wallpaper images
+- Profile photos
+- Project screenshots
+- Custom icons
 
-### Development Status
-- 🟢 **Core Features**: Complete and stable
-- 🟢 **Window Management**: Fully functional with resize support
-- 🟢 **Mobile Responsiveness**: Optimized for all device sizes
-- 🟢 **React Hooks**: All violations fixed and optimized
-- 🟢 **Performance**: Fast loading with efficient re-rendering
-
-### Changing Assets
-Replace images in the `attached_assets/` folder:
-- `bliss-wallpaper_*.jpg` - Desktop background
-- `profile_*.jpg` - Profile photo
-- Custom desktop icons for authentic XP look
-
-### Styling Modifications
-Customize Windows XP colors in `client/src/index.css`:
-
+### Theme Customization
+Modify XP color scheme in `client/src/index.css`:
 ```css
 :root {
-  --xp-blue: #0831d9;
-  --xp-blue-dark: #0831a9;
-  --xp-green: #73d216;
-  /* ... more XP color variables */
+  --xp-blue: #0078d4;
+  --xp-light-blue: #4a9eff;
+  --xp-green: #73aa24;
+  /* Add custom colors */
 }
 ```
 
-## 🌐 Deployment
+## 🌐 Browser Compatibility
 
-### Deploy to Vercel
-1. Push your code to GitHub
-2. Connect your repository to [Vercel](https://vercel.com)
-3. Configure build settings:
-   - **Build Command**: `npm run build`
-   - **Output Directory**: `dist`
+| Browser | Support Status | Features |
+|---------|---------------|----------|
+| **Chrome** | ✅ Full Support | All features including drag/drop |
+| **Firefox** | ✅ Full Support | Complete compatibility |
+| **Safari** | ✅ Full Support | macOS and iOS optimized |
+| **Edge** | ✅ Full Support | Windows optimized |
+| **Mobile Browsers** | ✅ Responsive | Touch-optimized interface |
 
-### Deploy to Netlify
-1. Build the project: `npm run build`
-2. Upload the `dist` folder to [Netlify](https://netlify.com)
+## 🐛 Troubleshooting
 
-### Deploy to Replit
-1. Import your GitHub repository to [Replit](https://replit.com)
-2. Run `npm install` and then `npm run dev`
-3. Use Replit's deployment feature for hosting
+### Common Issues
 
-## 🔧 Technology Stack
+**Windows not dragging properly**
+- Ensure you're dragging from the title bar area
+- Check if window is maximized (maximized windows cannot be dragged)
 
-### Frontend
-- **React 18**: Modern React with hooks and functional components
-- **TypeScript**: Type-safe development with enhanced IDE support
-- **Vite**: Fast build tool with HMR for development
-- **Tailwind CSS**: Utility-first CSS framework with custom XP theming
-- **Wouter**: Lightweight routing for client-side navigation
+**Maximize button not working**
+- This has been fixed in the latest version
+- Update to the latest commit for full functionality
 
-### UI Components
-- **Radix UI**: Accessible primitive components
-- **Lucide React**: Modern icon library
-- **Font Awesome**: Legacy icons for authentic XP styling
-- **React Hook Form**: Form handling with validation
+**Mobile responsiveness issues**
+- Clear browser cache and reload
+- Ensure viewport meta tag is present in HTML
 
-### State Management
-- **TanStack React Query**: Server state and caching
-- **Custom Hooks**: Window management and drag-and-drop functionality
-- **Session Storage**: Persistent window positions
+### Development Issues
 
-### Backend (Optional)
-- **Express.js**: Minimal server for API endpoints
-- **Drizzle ORM**: Type-safe database operations
-- **PostgreSQL**: Database for dynamic content (if needed)
+**Build errors**
+```bash
+# Clear node modules and reinstall
+rm -rf node_modules package-lock.json
+npm install
+```
 
-## 📝 Features in Detail
-
-### Window Management
-- **Draggable Windows**: Click and drag title bars to move windows
-- **Z-Index Management**: Automatic window focus and layering
-- **Minimize/Close**: Functional window controls
-- **Responsive Sizing**: Adaptive window sizes for mobile devices
-
-### Authentic XP Styling
-- **Gradient Backgrounds**: Authentic XP window and button gradients
-- **Classic Fonts**: Tahoma and MS Sans Serif font families
-- **Icon Styling**: Borderless, clean desktop icons
-- **Color Scheme**: Authentic XP blue and green color palette
-
-### Interactive Elements
-- **Start Menu**: Portfolio navigation and system options
-- **Desktop Icons**: Double-click to open windows
-- **Control Panel**: System settings with XP-style categories
-- **Help System**: Comprehensive help and navigation guide
+**TypeScript errors**
+```bash
+# Run type checking
+npm run type-check
+```
 
 ## 🤝 Contributing
 
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+### Development Process
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
+
+### Code Standards
+- Use TypeScript for all new code
+- Follow existing component patterns
+- Add proper prop types and interfaces
+- Include responsive design considerations
+- Test on multiple browsers
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👨‍💻 About the Developer
-
-**Apoorva Prakash**
-- 🎓 Computer Science Student at SRM Institute
-- 🔐 Specializing in Cyber Security
-- 💻 Passionate about Full Stack Development and AI/ML
-- 🌟 Creating innovative solutions with modern technologies
-
-### Connect with Me
-- 📧 **Email**: [ap75ro@gmail.com](mailto:ap75ro@gmail.com)
-- 💼 **LinkedIn**: [linkedin.com/in/apoorva-prakash-a00196265/](https://linkedin.com/in/apoorva-prakash-a00196265/)
-- 🐙 **GitHub**: [github.com/APRO-75](https://github.com/APRO-75)
-
 ## 🙏 Acknowledgments
 
-- **Microsoft Windows XP**: For the iconic design inspiration
-- **Replit**: For the development environment and deployment platform
-- **Open Source Community**: For the amazing tools and libraries used in this project
+- **Microsoft** for the iconic Windows XP design language
+- **React Team** for the excellent framework
+- **Tailwind CSS** for the utility-first approach
+- **Vite** for the lightning-fast build tool
+
+## 📞 Support
+
+- **Documentation**: Check the `/docs` folder for detailed guides
+- **Issues**: Report bugs via [GitHub Issues](issues)
+- **Discussions**: Join community discussions in [GitHub Discussions](discussions)
 
 ---
 
-⭐ **Star this repository if you found it helpful!**
+<div align="center">
 
-*Built with ❤️ and nostalgia for the classic Windows XP experience*
+**⭐ Star this repository if you found it helpful! ⭐**
+
+Made with ❤️ and nostalgia for Windows XP
+
+</div>

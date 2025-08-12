@@ -30,6 +30,7 @@ export function Desktop() {
     openWindow,
     closeWindow,
     minimizeWindow,
+    maximizeWindow,
     restoreWindow,
     bringToFront,
     updateWindowPosition,
@@ -98,6 +99,7 @@ export function Desktop() {
             window={window}
             onClose={closeWindow}
             onMinimize={minimizeWindow}
+            onMaximize={maximizeWindow}
             onBringToFront={bringToFront}
             onPositionChange={updateWindowPosition}
             onSizeChange={updateWindowSize}

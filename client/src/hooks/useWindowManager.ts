@@ -116,6 +116,30 @@ export function useWindowManager() {
     ));
   }, [currentZIndex]);
 
+  const maximizeWindow = useCallback((windowId: string) => {
+    setCurrentZIndex(prev => prev + 1);
+    setWindows(prev => prev.map(windowState =>
+      windowState.id === windowId
+        ? { 
+            ...windowState, 
+            isMaximized: !windowState.isMaximized,
+            isMinimized: false,
+            zIndex: currentZIndex + 1,
+            ...(windowState.isMaximized 
+              ? {} // When un-maximizing, keep current position/size
+              : { 
+                  position: { x: 0, y: 0 },
+                  size: { 
+                    width: typeof window !== 'undefined' ? window.innerWidth : 1200, 
+                    height: (typeof window !== 'undefined' ? window.innerHeight : 800) - 80 
+                  }
+                }
+            )
+          }
+        : windowState
+    ));
+  }, [currentZIndex]);
+
   const bringToFront = useCallback((windowId: string) => {
     setCurrentZIndex(prev => prev + 1);
     setWindows(prev => prev.map(window =>
@@ -157,6 +181,7 @@ export function useWindowManager() {
     openWindow,
     closeWindow,
     minimizeWindow,
+    maximizeWindow,
     restoreWindow,
     bringToFront,
     updateWindowPosition,
