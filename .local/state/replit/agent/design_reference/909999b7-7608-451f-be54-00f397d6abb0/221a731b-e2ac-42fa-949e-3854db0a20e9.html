@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apoorva Prakash - Windows XP Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'xp-blue': '#0078D4',
+                        'xp-blue-dark': '#316AC5',
+                        'xp-green': '#73D216',
+                        'xp-green-dark': '#4E9A06',
+                        'xp-beige': '#ECE9D8',
+                        'xp-silver': '#C0C0C0',
+                        'xp-gray': '#D4D0C8'
+                    },
+                    fontFamily: {
+                        'xp': ['Tahoma', 'Segoe UI', 'sans-serif']
+                    },
+                    backgroundImage: {
+                        'xp-button': 'linear-gradient(to bottom, #FEFEFE 0%, #F0F0F0 50%, #E8E8E8 51%, #D8D8D8 100%)',
+                        'xp-button-pressed': 'linear-gradient(to bottom, #D8D8D8 0%, #E8E8E8 49%, #F0F0F0 50%, #FEFEFE 100%)',
+                        'xp-window': 'linear-gradient(to bottom, #0078D4 0%, #316AC5 100%)',
+                        'xp-start': 'linear-gradient(to right, #73D216 0%, #4E9A06 100%)',
+                        'xp-taskbar': 'linear-gradient(to bottom, #245EDC 0%, #1941A5 50%, #1941A5 51%, #245EDC 100%)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .window-shadow {
+            box-shadow: 
+                0 0 0 1px rgba(0,0,0,0.1),
+                0 2px 4px rgba(0,0,0,0.2),
+                0 8px 16px rgba(0,0,0,0.15);
+        }
+        
+        .icon-glow:hover {
+            filter: drop-shadow(0 0 8px rgba(255,255,255,0.8));
+        }
+        
+        .dragging {
+            user-select: none;
+            z-index: 9999 !important;
+        }
+        
+        .window-content {
+            scrollbar-width: thin;
+            scrollbar-color: #C0C0C0 #F0F0F0;
+        }
+        
+        .window-content::-webkit-scrollbar {
+            width: 16px;
+        }
+        
+        .window-content::-webkit-scrollbar-track {
+            background: #F0F0F0;
+            border-left: 1px solid #808080;
+        }
+        
+        .window-content::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #FEFEFE 0%, #F0F0F0 50%, #E8E8E8 51%, #D8D8D8 100%);
+            border: 1px solid #808080;
+        }
+    </style>
+</head>
+<body class="font-xp overflow-hidden h-screen w-screen select-none">
+    <!-- Desktop Background -->
+    <!-- Rolling green hills landscape with bright blue sky - classic Windows XP Bliss wallpaper style -->
+    <div class="fixed inset-0 bg-cover bg-center bg-no-repeat" 
+         style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1080');">
+    </div>
+
+    <!-- Desktop Icons -->
+    <div class="fixed top-4 left-4 space-y-6 z-10">
+        <!-- About Me Icon -->
+        <div class="desktop-icon flex flex-col items-center cursor-pointer group" data-window="about">
+            <div class="icon-glow transition-all duration-200 group-hover:scale-110">
+                <div class="w-16 h-16 bg-xp-button border border-gray-400 rounded flex items-center justify-center mb-2 group-active:bg-xp-button-pressed">
+                    <i class="fas fa-user text-2xl text-gray-700"></i>
+                </div>
+            </div>
+            <span class="text-white text-sm font-bold drop-shadow-lg group-hover:drop-shadow-xl">About Me</span>
+        </div>
+
+        <!-- Projects Icon -->
+        <div class="desktop-icon flex flex-col items-center cursor-pointer group" data-window="projects">
+            <div class="icon-glow transition-all duration-200 group-hover:scale-110">
+                <div class="w-16 h-16 bg-xp-button border border-gray-400 rounded flex items-center justify-center mb-2 group-active:bg-xp-button-pressed">
+                    <i class="fas fa-code text-2xl text-gray-700"></i>
+                </div>
+            </div>
+            <span class="text-white text-sm font-bold drop-shadow-lg group-hover:drop-shadow-xl">Projects</span>
+        </div>
+
+        <!-- Resume Icon -->
+        <div class="desktop-icon flex flex-col items-center cursor-pointer group" data-window="resume">
+            <div class="icon-glow transition-all duration-200 group-hover:scale-110">
+                <div class="w-16 h-16 bg-xp-button border border-gray-400 rounded flex items-center justify-center mb-2 group-active:bg-xp-button-pressed">
+                    <i class="fas fa-file-pdf text-2xl text-red-600"></i>
+                </div>
+            </div>
+            <span class="text-white text-sm font-bold drop-shadow-lg group-hover:drop-shadow-xl">Resume</span>
+        </div>
+
+        <!-- Contact Icon -->
+        <div class="desktop-icon flex flex-col items-center cursor-pointer group" data-window="contact">
+            <div class="icon-glow transition-all duration-200 group-hover:scale-110">
+                <div class="w-16 h-16 bg-xp-button border border-gray-400 rounded flex items-center justify-center mb-2 group-active:bg-xp-button-pressed">
+                    <i class="fas fa-envelope text-2xl text-blue-600"></i>
+                </div>
+            </div>
+            <span class="text-white text-sm font-bold drop-shadow-lg group-hover:drop-shadow-xl">Contact</span>
+        </div>
+    </div>
+
+    <!-- Windows Container -->
+    <div id="windows-container" class="fixed inset-0 pointer-events-none">
+        <!-- About Me Window -->
+        <div id="about-window" class="window fixed top-20 left-32 w-96 h-80 bg-white window-shadow rounded-t hidden pointer-events-auto" style="z-index: 100;">
+            <div class="window-header bg-xp-window text-white p-2 rounded-t flex justify-between items-center cursor-move">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-user text-sm"></i>
+                    <span class="text-sm font-bold">About Me</span>
+                </div>
+                <div class="flex space-x-1">
+                    <button class="window-minimize w-5 h-5 bg-xp-button border border-gray-400 text-xs flex items-center justify-center hover:bg-gray-200">_</button>
+                    <button class="window-maximize w-5 h-5 bg-xp-button border border-gray-400 text-xs flex items-center justify-center hover:bg-gray-200">□</button>
+                    <button class="window-close w-5 h-5 bg-red-500 border border-red-600 text-white text-xs flex items-center justify-center hover:bg-red-600">×</button>
+                </div>
+            </div>
+            <div class="window-content p-4 h-full overflow-auto">
+                <div class="flex flex-col items-center space-y-4">
+                    <!-- Professional headshot of a young software developer -->
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150" 
+                         alt="Apoorva Prakash profile photo" 
+                         class="w-24 h-24 rounded-full border-2 border-xp-blue object-cover" />
+                    <div class="text-center">
+                        <h2 class="text-xl font-bold text-gray-800 mb-2">Apoorva Prakash</h2>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Passionate software developer with expertise in modern web technologies and machine learning. 
+                            I enjoy creating innovative solutions that blend technical excellence with creative design. 
+                            Currently exploring the intersection of AI and user experience design.
+                        </p>
+                        <div class="mt-3 text-xs text-gray-500">
+                            <p>🎯 Full Stack Developer</p>
+                            <p>🚀 AI Enthusiast</p>
+                            <p>💡 Problem Solver</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Window -->
+        <div id="projects-window" class="window fixed top-24 left-36 w-[600px] h-96 bg-white window-shadow rounded-t hidden pointer-events-auto" style="z-index: 100;">
+            <div class="window-header bg-xp-window text-white p-2 rounded-t flex justify-between items-center cursor-move">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-code text-sm"></i>
+                    <span class="text-sm font-bold">Projects</span>
+                </div>
+                <div class="flex space-x-1">
+                    <button class="window-minimize w-5 h-5 bg-xp-button border border-gray-400 text-xs flex items-center justify-center hover:bg-gray-200">_</button>
+                    <button class="window-maximize w-5 h-5 bg-xp-button border border-gray-400 text-xs flex items-center justify-center hover:bg-gray-200">□</button>
+                    <button class="window-close w-5 h-5 bg-red-500 border border-red-600 text-white text-xs flex items-center justify-center hover:bg-red-600">×</button>
+                </div>
+            </div>
+            <div class="window-content p-4 h-full overflow-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Project 1 -->
+                    <div class="project-card bg-gray-50 border border-gray-300 rounded p-4 hover:bg-gray-100 transition-colors cursor-pointer"
+                         onclick="window.open('https://github.com/APRO-75', '_blank')">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-10 h-10 bg-blue-500 rounded flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-hand-paper text-white text-sm"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-1">Sign Language Detector</h3>
+                                <p class="text-xs text-gray-600 mb-2">AI-powered real-time sign language recognition system using computer vision.</p>
+                                <div class="flex items-center space-x-1 text-xs text-blue-600">
+                                    <i class="fab fa-github"></i>
+                                    <span>View on GitHub</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card bg-gray-50 border border-gray-300 rounded p-4 hover:bg-gray-100 transition-colors cursor-pointer"
+                         onclick="window.open('https://github.com/APRO-75', '_blank')">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-10 h-10 bg-green-500 rounded flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-leaf text-white text-sm"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-1">Carbon Footprint Calculator</h3>
+                                <p class="text-xs text-gray-600 mb-2">Web application to calculate and track personal carbon emissions.</p>
+                                <div class="flex items-center space-x-1 text-xs text-blue-600">
+                                    <i class="fab fa-github"></i>
+                                    <span>View on GitHub</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-card bg-gray-50 border border-gray-300 rounded p-4 hover:bg-gray-100 transition-colors cursor-pointer"
+                         onclick="window.open('https://github.com/APRO-75', '_blank')">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-10 h-10 bg-purple-500 rounded flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-terminal text-white text-sm"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-1">AutoCat CLI Wrapper</h3>
+                                <p class="text-xs text-gray-600 mb-2">Command-line interface tool for automating repetitive development tasks.</p>
+                                <div class="flex items-center space-x-1 text-xs text-blue-600">
+                                    <i class="fab fa-github"></i>
+                                    <span>View on GitHub</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div class="project-card bg-gray-50 border border-gray-300 rounded p-4 hover:bg-gray-100 transition-colors cursor-pointer"
+                         onclick="window.open('https://github.com/APRO-75', '_blank')">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-10 h-10 bg-orange-500 rounded flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-gamepad text-white text-sm"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm mb-1">Gamified Constitution Learning</h3>
+                                <p class="text-xs text-gray-600 mb-2">Interactive educational game to learn constitutional concepts through gameplay.</p>
+                                <div class="flex items-center space-x-1 text-xs text-blue-600">
+                                    <i class="fab fa-github"></i>
+                                    <span>View on GitHub</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resume Window -->
+        <div id="resume-window" class="window fixed top-28 left-40 w-[700px] h-[500px] bg-white window-shadow rounded-t hidden pointer-events-auto" style="z-index: 100;">
+            <div class="window-header bg-xp-window text-white p-2 rounded-t flex justify-between items-center cursor-move">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-file-pdf text-sm"></i>
+                    <span class="text-sm font-bold">Resume</span>
+                </div>
+                <div class="flex space-x-1">
+                    <button class="window-minimize w-5 h-5 bg-xp-button border border-gray-400 text-xs flex items-center justify-center hover:bg-gray-200">_</button>
+                    <button class="window-maximize w-5 h-5 bg-xp-button border border-gray-400 text-xs flex items-center justify-center hover:bg-gray-200">□</button>
+                    <button class="window-close w-5 h-5 bg-red-500 border border-red-600 text-white text-xs flex items-center justify-center hover:bg-red-600">×</button>
+                </div>
+            </div>
+            <div class="window-content p-4 h-full overflow-auto">
+                <div class="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-full flex flex-col items-center justify-center">
+                    <i class="fas fa-file-pdf text-6xl text-red-500 mb-4"></i>
+                    <p class="text-gray-700 text-center mb-4">
+                        <strong>Resume PDF Viewer</strong><br>
+                        <span class="text-sm">In a real implementation, this would show an embedded PDF viewer</span>
+                    </p>
+                    <div class="text-xs text-gray-500 text-center">
+                        <!-- @IMPLEMENTATION: Use PDF.js or similar library to embed resume.pdf -->
+                        <p>📄 Expected file: assets/resume.pdf</p>
+                        <p>💡 Use iframe or PDF.js for embedding</p>
+                    </div>
+                    <button class="mt-4 px-4 py-2 bg-xp-blue text-white text-sm rounded hover:bg-xp-blue-dark transition-colors">
+                        Download Resume (PDF)
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Window -->
+        <div id="contact-window" class="window fixed top-32 left-44 w-80 h-64 bg-white window-shadow rounded-t hidden pointer-events-auto" style="z-index: 100;">
+            <div class="window-header bg-xp-window text-white p-2 rounded-t flex justify-between items-center cursor-move">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-envelope text-sm"></i>
+                    <span class="text-sm font-bold">Contact</span>
+                </div>
+                <div class="flex space-x-1">
+                    <button class="window-minimize w-5 h-5 bg-xp-button border border-gray-400 text-xs flex items-center justify-center hover:bg-gray-200">_</button>
+                    <button class="window-maximize w-5 h-5 bg-xp-button border border-gray-400 text-xs flex items-center justify-center hover:bg-gray-200">□</button>
+                    <button class="window-close w-5 h-5 bg-red-500 border border-red-600 text-white text-xs flex items-center justify-center hover:bg-red-600">×</button>
+                </div>
+            </div>
+            <div class="window-content p-4 h-full overflow-auto">
+                <div class="space-y-4">
+                    <h2 class="text-lg font-bold text-gray-800 mb-4">Get In Touch</h2>
+                    
+                    <!-- Email -->
+                    <a href="mailto:ap75ro@gmail.com" class="contact-item flex items-center space-x-3 p-2 rounded hover:bg-gray-100 transition-colors">
+                        <div class="w-8 h-8 bg-blue-500 rounded flex items-center justify-center">
+                            <i class="fas fa-envelope text-white text-sm"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-800">Email</p>
+                            <p class="text-xs text-gray-600">ap75ro@gmail.com</p>
+                        </div>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="https://linkedin.com/in/apoorva-prakash-a00196265/" target="_blank" 
+                       class="contact-item flex items-center space-x-3 p-2 rounded hover:bg-gray-100 transition-colors">
+                        <div class="w-8 h-8 bg-blue-700 rounded flex items-center justify-center">
+                            <i class="fab fa-linkedin text-white text-sm"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-800">LinkedIn</p>
+                            <p class="text-xs text-gray-600">Connect professionally</p>
+                        </div>
+                    </a>
+
+                    <!-- GitHub -->
+                    <a href="https://github.com/APRO-75" target="_blank"
+                       class="contact-item flex items-center space-x-3 p-2 rounded hover:bg-gray-100 transition-colors">
+                        <div class="w-8 h-8 bg-gray-800 rounded flex items-center justify-center">
+                            <i class="fab fa-github text-white text-sm"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-800">GitHub</p>
+                            <p class="text-xs text-gray-600">View my code</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Taskbar -->
+    <div class="fixed bottom-0 left-0 right-0 h-10 bg-xp-taskbar border-t border-gray-400 flex items-center px-2 z-50">
+        <!-- Start Button -->
+        <button id="start-button" class="bg-xp-start text-white px-4 py-1 rounded-r text-sm font-bold border border-gray-400 hover:brightness-110 flex items-center space-x-2">
+            <div class="w-4 h-4 bg-white rounded-sm flex items-center justify-center">
+                <div class="w-2 h-2 bg-red-500 rounded-sm"></div>
+            </div>
+            <span>Start</span>
+        </button>
+
+        <!-- Window Buttons Container -->
+        <div id="taskbar-windows" class="flex ml-2 space-x-1">
+            <!-- Dynamically populated with open windows -->
+        </div>
+
+        <!-- Clock (optional) -->
+        <div class="ml-auto bg-xp-gray border border-gray-400 px-3 py-1 text-xs">
+            <span id="clock">12:34 PM</span>
+        </div>
+    </div>
+
+    <!-- Start Menu -->
+    <div id="start-menu" class="fixed bottom-10 left-0 w-64 bg-white border border-gray-400 window-shadow rounded-tr hidden z-50">
+        <div class="bg-xp-blue text-white p-3 text-sm font-bold">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-white rounded flex items-center justify-center">
+                    <!-- Professional headshot thumbnail for start menu -->
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=32&h=32" 
+                         alt="User avatar" class="w-6 h-6 rounded object-cover" />
+                </div>
+                <span>Apoorva Prakash</span>
+            </div>
+        </div>
+        <div class="p-2">
+            <div class="start-menu-item flex items-center space-x-3 p-2 hover:bg-blue-100 cursor-pointer rounded" data-window="about">
+                <i class="fas fa-user w-4 text-gray-600"></i>
+                <span class="text-sm">About Me</span>
+            </div>
+            <div class="start-menu-item flex items-center space-x-3 p-2 hover:bg-blue-100 cursor-pointer rounded" data-window="projects">
+                <i class="fas fa-code w-4 text-gray-600"></i>
+                <span class="text-sm">Projects</span>
+            </div>
+            <div class="start-menu-item flex items-center space-x-3 p-2 hover:bg-blue-100 cursor-pointer rounded" data-window="resume">
+                <i class="fas fa-file-pdf w-4 text-gray-600"></i>
+                <span class="text-sm">Resume</span>
+            </div>
+            <div class="start-menu-item flex items-center space-x-3 p-2 hover:bg-blue-100 cursor-pointer rounded" data-window="contact">
+                <i class="fas fa-envelope w-4 text-gray-600"></i>
+                <span class="text-sm">Contact</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Navigation (hidden on desktop) -->
+    <div class="fixed inset-x-0 bottom-0 bg-white border-t border-gray-300 p-4 md:hidden z-50">
+        <div class="grid grid-cols-4 gap-4">
+            <button class="mobile-nav-btn flex flex-col items-center space-y-1" data-window="about">
+                <div class="w-12 h-12 bg-xp-button border border-gray-400 rounded flex items-center justify-center">
+                    <i class="fas fa-user text-xl text-gray-700"></i>
+                </div>
+                <span class="text-xs">About</span>
+            </button>
+            <button class="mobile-nav-btn flex flex-col items-center space-y-1" data-window="projects">
+                <div class="w-12 h-12 bg-xp-button border border-gray-400 rounded flex items-center justify-center">
+                    <i class="fas fa-code text-xl text-gray-700"></i>
+                </div>
+                <span class="text-xs">Projects</span>
+            </button>
+            <button class="mobile-nav-btn flex flex-col items-center space-y-1" data-window="resume">
+                <div class="w-12 h-12 bg-xp-button border border-gray-400 rounded flex items-center justify-center">
+                    <i class="fas fa-file-pdf text-xl text-red-600"></i>
+                </div>
+                <span class="text-xs">Resume</span>
+            </button>
+            <button class="mobile-nav-btn flex flex-col items-center space-y-1" data-window="contact">
+                <div class="w-12 h-12 bg-xp-button border border-gray-400 rounded flex items-center justify-center">
+                    <i class="fas fa-envelope text-xl text-blue-600"></i>
+                </div>
+                <span class="text-xs">Contact</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            let currentZIndex = 100;
+            let draggedElement = null;
+            let dragOffset = { x: 0, y: 0 };
+            const windowPositions = {};
+
+            // Load window positions from session storage
+            function loadWindowPositions() {
+                const saved = sessionStorage.getItem('windowPositions');
+                if (saved) {
+                    Object.assign(windowPositions, JSON.parse(saved));
+                }
+            }
+
+            // Save window positions to session storage
+            function saveWindowPositions() {
+                sessionStorage.setItem('windowPositions', JSON.stringify(windowPositions));
+            }
+
+            // Update clock
+            function updateClock() {
+                const now = new Date();
+                const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                document.getElementById('clock').textContent = time;
+            }
+
+            // Initialize clock
+            updateClock();
+            setInterval(updateClock, 1000);
+
+            // Window management
+            function openWindow(windowId) {
+                const window = document.getElementById(windowId + '-window');
+                if (!window) return;
+
+                // Show window
+                window.classList.remove('hidden');
+                bringToFront(window);
+
+                // Apply saved position if exists
+                if (windowPositions[windowId]) {
+                    window.style.left = windowPositions[windowId].x + 'px';
+                    window.style.top = windowPositions[windowId].y + 'px';
+                }
+
+                // Add to taskbar
+                addToTaskbar(windowId);
+
+                // Mobile: make fullscreen
+                if (window.innerWidth < 768) {
+                    window.style.left = '0px';
+                    window.style.top = '0px';
+                    window.style.width = '100vw';
+                    window.style.height = 'calc(100vh - 80px)';
+                    window.classList.add('rounded-none');
+                }
+            }
+
+            function closeWindow(windowId) {
+                const window = document.getElementById(windowId + '-window');
+                if (window) {
+                    window.classList.add('hidden');
+                    removeFromTaskbar(windowId);
+                }
+            }
+
+            function bringToFront(windowElement) {
+                currentZIndex += 1;
+                windowElement.style.zIndex = currentZIndex;
+            }
+
+            function addToTaskbar(windowId) {
+                const taskbarWindows = document.getElementById('taskbar-windows');
+                const existingButton = document.getElementById('taskbar-' + windowId);
+                if (existingButton) return;
+
+                const button = document.createElement('button');
+                button.id = 'taskbar-' + windowId;
+                button.className = 'bg-xp-button border border-gray-400 px-3 py-1 text-xs hover:bg-gray-200 min-w-0';
+                button.textContent = windowId.charAt(0).toUpperCase() + windowId.slice(1).replace('-', ' ');
+                button.onclick = () => {
+                    const window = document.getElementById(windowId + '-window');
+                    if (window.classList.contains('hidden')) {
+                        openWindow(windowId);
+                    } else {
+                        bringToFront(window);
+                    }
+                };
+                taskbarWindows.appendChild(button);
+            }
+
+            function removeFromTaskbar(windowId) {
+                const button = document.getElementById('taskbar-' + windowId);
+                if (button) {
+                    button.remove();
+                }
+            }
+
+            // Drag and drop functionality
+            function initializeDrag() {
+                document.querySelectorAll('.window-header').forEach(header => {
+                    header.addEventListener('mousedown', startDrag);
+                });
+
+                document.addEventListener('mousemove', drag);
+                document.addEventListener('mouseup', endDrag);
+            }
+
+            function startDrag(e) {
+                draggedElement = e.target.closest('.window');
+                if (!draggedElement) return;
+
+                bringToFront(draggedElement);
+                draggedElement.classList.add('dragging');
+
+                const rect = draggedElement.getBoundingClientRect();
+                dragOffset.x = e.clientX - rect.left;
+                dragOffset.y = e.clientY - rect.top;
+            }
+
+            function drag(e) {
+                if (!draggedElement) return;
+
+                const x = Math.max(0, Math.min(window.innerWidth - draggedElement.offsetWidth, e.clientX - dragOffset.x));
+                const y = Math.max(0, Math.min(window.innerHeight - draggedElement.offsetHeight - 40, e.clientY - dragOffset.y));
+
+                draggedElement.style.left = x + 'px';
+                draggedElement.style.top = y + 'px';
+
+                // Save position
+                const windowId = draggedElement.id.replace('-window', '');
+                windowPositions[windowId] = { x, y };
+                saveWindowPositions();
+            }
+
+            function endDrag() {
+                if (draggedElement) {
+                    draggedElement.classList.remove('dragging');
+                    draggedElement = null;
+                }
+            }
+
+            // Window controls
+            function initializeWindowControls() {
+                document.querySelectorAll('.window-close').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const windowId = e.target.closest('.window').id.replace('-window', '');
+                        closeWindow(windowId);
+                    });
+                });
+
+                document.querySelectorAll('.window-minimize').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const windowElement = e.target.closest('.window');
+                        windowElement.classList.add('hidden');
+                    });
+                });
+
+                document.querySelectorAll('.window-maximize').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const windowElement = e.target.closest('.window');
+                        // TODO: Implement maximize functionality
+                        console.log('Maximize clicked - to be implemented');
+                    });
+                });
+            }
+
+            // Desktop icon handlers
+            function initializeDesktopIcons() {
+                document.querySelectorAll('.desktop-icon').forEach(icon => {
+                    icon.addEventListener('dblclick', () => {
+                        const windowId = icon.dataset.window;
+                        openWindow(windowId);
+                    });
+                });
+            }
+
+            // Mobile navigation handlers
+            function initializeMobileNav() {
+                document.querySelectorAll('.mobile-nav-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const windowId = btn.dataset.window;
+                        openWindow(windowId);
+                    });
+                });
+            }
+
+            // Start menu functionality
+            function initializeStartMenu() {
+                const startButton = document.getElementById('start-button');
+                const startMenu = document.getElementById('start-menu');
+
+                startButton.addEventListener('click', () => {
+                    startMenu.classList.toggle('hidden');
+                });
+
+                document.querySelectorAll('.start-menu-item').forEach(item => {
+                    item.addEventListener('click', () => {
+                        const windowId = item.dataset.window;
+                        openWindow(windowId);
+                        startMenu.classList.add('hidden');
+                    });
+                });
+
+                // Close start menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!startButton.contains(e.target) && !startMenu.contains(e.target)) {
+                        startMenu.classList.add('hidden');
+                    }
+                });
+            }
+
+            // Window click handler
+            function initializeWindowClickHandler() {
+                document.querySelectorAll('.window').forEach(window => {
+                    window.addEventListener('mousedown', () => {
+                        bringToFront(window);
+                    });
+                });
+            }
+
+            // Touch support for mobile drag
+            function initializeTouchDrag() {
+                document.querySelectorAll('.window-header').forEach(header => {
+                    header.addEventListener('touchstart', (e) => {
+                        const touch = e.touches[0];
+                        const mouseEvent = new MouseEvent('mousedown', {
+                            clientX: touch.clientX,
+                            clientY: touch.clientY
+                        });
+                        startDrag(mouseEvent);
+                    });
+                });
+
+                document.addEventListener('touchmove', (e) => {
+                    if (draggedElement) {
+                        e.preventDefault();
+                        const touch = e.touches[0];
+                        const mouseEvent = new MouseEvent('mousemove', {
+                            clientX: touch.clientX,
+                            clientY: touch.clientY
+                        });
+                        drag(mouseEvent);
+                    }
+                });
+
+                document.addEventListener('touchend', endDrag);
+            }
+
+            // Initialize everything
+            loadWindowPositions();
+            initializeDrag();
+            initializeTouchDrag();
+            initializeWindowControls();
+            initializeDesktopIcons();
+            initializeMobileNav();
+            initializeStartMenu();
+            initializeWindowClickHandler();
+
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                document.querySelectorAll('.window').forEach(window => {
+                    const rect = window.getBoundingClientRect();
+                    if (rect.right > window.innerWidth) {
+                        window.style.left = Math.max(0, window.innerWidth - window.offsetWidth) + 'px';
+                    }
+                    if (rect.bottom > window.innerHeight - 40) {
+                        window.style.top = Math.max(0, window.innerHeight - window.offsetHeight - 40) + 'px';
+                    }
+                });
+            });
+
+        })();
+    </script>
+</body>
+</html>
